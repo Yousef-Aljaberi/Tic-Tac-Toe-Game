@@ -93,7 +93,7 @@ namespace Tic_Tac_Toe_Game.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap x5 {
+        internal static System.Drawing.Bitmap x {
             get {
                 object obj = ResourceManager.GetObject("x5", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
