@@ -12,155 +12,156 @@ namespace Tic_Tac_Toe_Game
 {
     public partial class Form1 : Form
     {
-        enum enGameOption { Player1, Player2, GameOver, Draw, InPrgrass }
-        private struct GameInfo
+        stGameStatus GameStatus;
+        enPlayer PlayerTurn = enPlayer.Player1;
+
+        enum enPlayer
+        { 
+            Player1,
+            Player2,
+            GameOver,
+        }
+        enum enWinner 
+        { 
+            Player1,
+            Player2,
+            Draw, 
+            InPrgrass
+        }
+
+        struct stGameStatus
         {
-            public enGameOption Turn;
-            public enGameOption Winner;
-            public bool IsPlyer1;
-            public int Count;
+            public enWinner Winner;
+            public bool GameOver;
+            public short PlayCount;
 
         }
 
-       void InitializeGame()
-        {
-            gameInfo.Turn = enGameOption.Player1;
-            gameInfo.Winner = enGameOption.InPrgrass;
-            gameInfo.IsPlyer1 = true;
-            gameInfo.Count = 0;
-
-            ChangeGameInfoResult();
-
-        }
         public Form1()
         {
             InitializeComponent();
+        }       
+
+
+        bool CheckValues(Button b1,Button b2, Button b3)
+        {
+            if (b1.Tag.ToString() !="?" && b1.Tag== b2.Tag && b1.Tag == b3.Tag)
+            {
+               if(b1.Tag.ToString()=="X")
+                {
+                    GameStatus.Winner = enWinner.Player1;
+                    GameStatus.GameOver = true;
+                    EndGame();
+                    return true;
+                }
+
+               else
+                {
+                    GameStatus.Winner = enWinner.Player2;
+                    GameStatus.GameOver = true;
+                    EndGame();
+                    return true;
+                }
+            }
+
+            GameStatus.GameOver=false;
+            return false;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+
+        void EndGame()
         {
-            InitializeGame();
-        }
+            lblTurn.Text = "Game Over";
+            switch (GameStatus.Winner)
+            {
 
+                case enWinner.Player1:
 
+                    lblWinner.Text = "Player1";
+                    break;
 
+                case enWinner.Player2:
 
-        GameInfo gameInfo;
+                    lblWinner.Text = "Player2";
+                    break;
 
-        void ShowGameOver()
-        {
-            lblWinner.Text = gameInfo.Winner.ToString();
-            lblTurn.Text = enGameOption.GameOver.ToString();
+                default:
+
+                    lblWinner.Text = "Draw";
+                    break;
+
+            }
+
             MessageBox.Show("GameOver", "GameOver", MessageBoxButtons.OK, MessageBoxIcon.Information);
-           
+
         }
-
-        void ChangeGameInfoResult()
+        void CheckWinner()
         {
-            lblTurn.Text=gameInfo.Turn.ToString();
-            lblWinner.Text=gameInfo.Winner.ToString();
-        }
 
-        bool IsWin(string c,Button b1,Button b2, Button b3)
-        {
-            if (b1.Tag.ToString() == c && b1.Tag== b2.Tag && b1.Tag == b3.Tag)
-            {
-                b1.BackColor = b2.BackColor = b3.BackColor = Color.DarkOrange;
-                return true;
-            }
-            return false;
-        }
 
-        bool CheckResult(string PlyerChar)
-        {
-            
+            if (CheckValues(btn1_1, btn1_2, btn1_3))
+                return;
 
-            if (IsWin(PlyerChar, btn1_1, btn1_2, btn1_3))
-                return true;
-            
-            if (IsWin(PlyerChar, btn2_1, btn2_2, btn2_3))
-                return true;
-            
-            if (IsWin(PlyerChar, btn3_1, btn3_2, btn3_3))
-                return true;
-            
-            if (IsWin(PlyerChar, btn1_1, btn2_1, btn3_1))
-                return true;
-            
-            if (IsWin(PlyerChar, btn1_2, btn2_2, btn3_2))
-                return true;
-            
-            if (IsWin(PlyerChar, btn1_3, btn2_3, btn3_3))
-                return true;
-            
-            if (IsWin(PlyerChar, btn1_1, btn2_2, btn3_3))
-                return true; 
-            
-            if (IsWin(PlyerChar, btn1_3, btn2_2, btn3_1))
-                return true;
+            if (CheckValues(btn2_1, btn2_2, btn2_3))
+                return;
 
-            return false;        
-        }
+            if (CheckValues(btn3_1, btn3_2, btn3_3))
+                return;
 
-        bool IsPlayerWin()
-        {
-            string PlyerChar = gameInfo.IsPlyer1 ? "X" : "O";
+            if (CheckValues(btn1_1, btn2_1, btn3_1))
+                return;
 
-            if (CheckResult(PlyerChar))
-            {
-                gameInfo.Winner = gameInfo.Turn;
-                ShowGameOver();
-                return true;
-            }
-            return false;
+            if (CheckValues(btn1_2, btn2_2, btn3_2))
+                return;
+
+            if (CheckValues(btn1_3, btn2_3, btn3_3))
+                return;
+
+            if (CheckValues(btn1_1, btn2_2, btn3_3))
+                return;
+
+            if (CheckValues(btn1_3, btn2_2, btn3_1))
+                return;
         }
         void ChangePhoto(Object sender)
         {
             Button button=(Button)sender;
 
-          
-            if (button.Tag.ToString() != "?")
-            {
-                MessageBox.Show("Wrong Choice", "Waring", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
 
-            if(gameInfo.IsPlyer1)
+            if (button.Tag.ToString() == "?")
             {
-                button.BackgroundImage = Properties.Resources.x;
-                button.Tag = "X";
-               if(IsPlayerWin())
+
+                switch (PlayerTurn)
                 {
-                    return;
+                    case enPlayer.Player1:
+                        button.BackgroundImage = Properties.Resources.x;
+                        PlayerTurn = enPlayer.Player2;
+                        lblTurn.Text = "Player 2";
+                        GameStatus.PlayCount++;
+                        button.Tag = "X";
+                        CheckWinner();
+                        break;
+                    case enPlayer.Player2:
+                        button.BackgroundImage = Properties.Resources.o;
+                        PlayerTurn = enPlayer.Player1;
+                        lblTurn.Text = "Player 1";
+                        GameStatus.PlayCount++;
+                        button.Tag = "O";
+                        CheckWinner();
+                        break;
                 }
-                gameInfo.Turn = enGameOption.Player2;
             }
-
             else
             {
-                button.BackgroundImage = Properties.Resources.o;
-                button.Tag = "O";
 
-                if (IsPlayerWin())
-                {
-                    return;
-                }
-
-                gameInfo.Turn = enGameOption.Player1;
+                MessageBox.Show("Wrong Choice", "Waring", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            
-
-            gameInfo.Count++;
-            gameInfo.IsPlyer1 = !gameInfo.IsPlyer1;
-
-            ChangeGameInfoResult();
-
-            if (gameInfo.Count == 9)
+            if (GameStatus.PlayCount == 9)
             {
-                gameInfo.Winner=enGameOption.Draw;
-                ShowGameOver();
-                return;
+                GameStatus.GameOver = true;
+                GameStatus.Winner = enWinner.Draw;
+                EndGame();
             }
         }
 
@@ -169,20 +170,32 @@ namespace Tic_Tac_Toe_Game
             ChangePhoto(sender);
         }
 
-       
-
-        private void btnRestart_Click_1(object sender, EventArgs e)
+       void RestartGame()
         {
-            foreach(Button b in this.Controls.OfType<Button>())
+            foreach (Button b in this.Controls.OfType<Button>())
             {
-                if(b.Tag.ToString()!="R")
+                if (b.Tag.ToString() != "Restart")
                 {
                     b.Tag = "?";
                     b.BackgroundImage = Properties.Resources.q;
                 }
             }
 
-            InitializeGame();
+            PlayerTurn = enPlayer.Player1;
+            GameStatus.PlayCount = 0;
+            GameStatus.GameOver = false;
+            GameStatus.Winner = enWinner.InPrgrass;
+            lblWinner.Text = "In Prograss";
+        }
+
+        private void btnRestart_Click_1(object sender, EventArgs e)
+        {
+            RestartGame();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+             
         }
     }
 }

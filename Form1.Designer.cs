@@ -50,6 +50,7 @@
             // 
             this.btn1_3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn1_3.BackgroundImage")));
             this.btn1_3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn1_3.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.btn1_3.Location = new System.Drawing.Point(1515, 418);
             this.btn1_3.Name = "btn1_3";
             this.btn1_3.Size = new System.Drawing.Size(217, 190);
@@ -74,6 +75,7 @@
             // 
             this.btn1_2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn1_2.BackgroundImage")));
             this.btn1_2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn1_2.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.btn1_2.Location = new System.Drawing.Point(1193, 418);
             this.btn1_2.Name = "btn1_2";
             this.btn1_2.Size = new System.Drawing.Size(217, 190);
@@ -86,6 +88,7 @@
             // 
             this.btn1_1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn1_1.BackgroundImage")));
             this.btn1_1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn1_1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.btn1_1.Location = new System.Drawing.Point(858, 418);
             this.btn1_1.Name = "btn1_1";
             this.btn1_1.Size = new System.Drawing.Size(217, 190);
@@ -98,6 +101,7 @@
             // 
             this.btn2_3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn2_3.BackgroundImage")));
             this.btn2_3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn2_3.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.btn2_3.Location = new System.Drawing.Point(1515, 650);
             this.btn2_3.Name = "btn2_3";
             this.btn2_3.Size = new System.Drawing.Size(217, 190);
@@ -110,6 +114,7 @@
             // 
             this.btn2_2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn2_2.BackgroundImage")));
             this.btn2_2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn2_2.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.btn2_2.Location = new System.Drawing.Point(1193, 650);
             this.btn2_2.Name = "btn2_2";
             this.btn2_2.Size = new System.Drawing.Size(217, 190);
@@ -122,6 +127,7 @@
             // 
             this.btn2_1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn2_1.BackgroundImage")));
             this.btn2_1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn2_1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.btn2_1.Location = new System.Drawing.Point(858, 650);
             this.btn2_1.Name = "btn2_1";
             this.btn2_1.Size = new System.Drawing.Size(217, 190);
@@ -145,6 +151,7 @@
             // 
             this.btn3_2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn3_2.BackgroundImage")));
             this.btn3_2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn3_2.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.btn3_2.Location = new System.Drawing.Point(1193, 882);
             this.btn3_2.Name = "btn3_2";
             this.btn3_2.Size = new System.Drawing.Size(217, 190);
@@ -157,6 +164,7 @@
             // 
             this.btn3_1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn3_1.BackgroundImage")));
             this.btn3_1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn3_1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.btn3_1.Location = new System.Drawing.Point(858, 882);
             this.btn3_1.Name = "btn3_1";
             this.btn3_1.Size = new System.Drawing.Size(217, 190);
@@ -211,7 +219,7 @@
             this.btnRestart.Name = "btnRestart";
             this.btnRestart.Size = new System.Drawing.Size(390, 94);
             this.btnRestart.TabIndex = 14;
-            this.btnRestart.Tag = "R";
+            this.btnRestart.Tag = "Restart";
             this.btnRestart.Text = "Restart Game";
             this.btnRestart.UseVisualStyleBackColor = false;
             this.btnRestart.Click += new System.EventHandler(this.btnRestart_Click_1);
@@ -220,6 +228,7 @@
             // 
             this.btn3_3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn3_3.BackgroundImage")));
             this.btn3_3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn3_3.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.btn3_3.Location = new System.Drawing.Point(1515, 882);
             this.btn3_3.Name = "btn3_3";
             this.btn3_3.Size = new System.Drawing.Size(217, 190);
