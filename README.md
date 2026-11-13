@@ -26,7 +26,7 @@ Players can also restart the game to clear the board and begin a new round.
 
 |            Game Board            |            Game Result            |
 | :------------------------------: | :-------------------------------: |
-| ![Game Board](Screenshots/1.png) | ![Game Result](Screenshots/2.png) |
+| ![Game Board](Screenshots/1.jpg) | ![Game Result](Screenshots/2.jpg) |
 
 ---
 
